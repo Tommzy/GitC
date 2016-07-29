@@ -48,13 +48,14 @@
         </button>
         </div>
         <ul class="list-group col-md-offset-3">
-                <ul uib-pagination
-                    total-items="totalpage"
-                    ng-model="current_page"
-                    ng-change = "search()"
-                    max-size="maxSize"
-                    class="pagination-sm"
-                    boundary-links="true" force-ellipses="true"></ul>
+            <ul uib-pagination
+                total-items="totalpage"
+                ng-model="current_page"
+                ng-change = "search()"
+                max-size="maxSize"
+                class="pagination-sm"
+                boundary-links="true" force-ellipses="true">
+            </ul>
             <li class="list-group-item text-left" ng-repeat="result in results">
                 {{result.status}}
                 {{result.error}}
@@ -69,6 +70,14 @@
                 <br>
                 Last Updated : {{result.updated_at}}
             </li>
+            <ul uib-pagination
+                total-items="totalpage"
+                ng-model="current_page"
+                ng-change = "search()"
+                max-size="maxSize"
+                class="pagination-sm"
+                boundary-links="true" force-ellipses="true">
+            </ul>
         </ul>
     </div>
 </body>
