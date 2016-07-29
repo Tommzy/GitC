@@ -1,0 +1,15 @@
+{
+  "name": "GitC-Front",
+  "version": "0.0.1",
+  "dependencies": {
+    "bootstrap": "latest",
+    "font-awesome": "latest",
+    "animate.css": "latest",
+    "angular": "latest",
+    "angular-route": "latest",
+    "angular-bootstrap": "latest",
+    "angular-animate": "latest",
+    "angular-bootstrap-show-errors": "~2.3.0",
+    "angular-ui-select": "^0.18.1"
+  }
+}

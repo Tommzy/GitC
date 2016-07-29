@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="searchRouter">
+<head>
+    <meta charset="UTF-8">
+    <script src="libs/angular/angular.js"></script>
+    <script src="libs/angular-bootstrap/ui-bootstrap-tpls.js"></script>
+    <script src="libs/angular-route/angular-route.js"></script>
+    <script src="libs/angular-animate/angular-animate.js"></script>
+    <link rel="stylesheet" href="libs/bootstrap/dist/css/bootstrap.css">
+    <link rel="stylesheet" href="libs/angular-bootstrap/ui-bootstrap.js">
+    <link rel="stylesheet" href="libs/font-awesome/css/font-awesome.css">
+    <script src="js/router/searchRouter.js"></script>
+    <script src="js/controller/searchController.js"></script>
+    <script src="js/service/searchService.js"></script>
+    <link rel="stylesheet" href="css/style.css">
+    <title>GitC</title>
+</head>
+<body ng-controller="searchController">
+    <div class="page-header col-md-offset-1">
+        <h1>Git C/C++ Search<small>Beta3.1415</small></h1>
+    </div>
+    <div class="jumbotron col-md-offset-1">
+
+        <input type="number" class="form-control" ng-model="result_perpage" min = "0">
+        <div class="btn-group" uib-dropdown is-open="status.isopen">
+            <button id="single-button" ng-model="order" type="button" class="btn btn-primary" uib-dropdown-toggle
+                    ng-disabled="disabled">
+                Sort By : {{sort.display_name}} <span class="caret"></span>
+            </button>
+            <ul class="dropdown-menu" uib-dropdown-menu aria-labelledby="simple-dropdown">
+                <li role="menuitem" ng-repeat="choice in sort_menu">
+                    <a href ng-click="changeSort(choice)">{{choice.display_name}}</a>
+                </li>
+            </ul>
+        </div>
+        <div class="col-md-offset-3">
+            <span class="input-group-btn">
+                <button class="btn btn-default pull-left" type="button" ng-click="prev()">
+                    ←Prev
+                </button>
+                <div class="col-xs-2 col-xs-offset-3">
+                    <input type="number" class="form-control" ng-model="current_page" min="0">
+                </div>
+                <button class="btn btn-default pull-right" type="button" ng-click="next()">
+                    Next→
+                </button>
+            </span>
+        </div>
+        <ul class="list-group col-md-offset-3 center">
+            <li class="list-group-item" ng-repeat="result in results">
+                {{result.status}}
+                {{result.error}}
+                <a ng-href="{{result.html_url}}">
+                    {{result.full_name}}
+                </a>
+                <span class="badge">Language : {{result.language}}</span>
+                <span class="badge">Forks: {{result.forks_count}}</span>
+                <span class="badge">Star: {{result.stargazers_count}}</span>
+                <br>
+                {{result.description}}
+                <br>
+                {{result.created_at}}
+                {{result.updated_at}}
+            </li>
+        </ul>
+    </div>
+</body>
+</html>
