@@ -5,9 +5,10 @@
 //create an Angular service for http request to git search API and restful web service(backend)
 searchRouter.service('searchService', function ($http, $q) {
     return {
+        //create http request to the Github search API
+        // return data
+        // pass promise error
         getRepository: function(searchStr, language_1, language_2,sort, order, current_page, result_perpage){
-        // getRepository: function(){
-
             return $http.get("https://api.github.com/search/repositories?" +
                 "q=" +
                 "+language:" + language_1 +
@@ -19,7 +20,7 @@ searchRouter.service('searchService', function ($http, $q) {
                 var result = null;
                 if (response.data != null) {
                     console.log("Result Received from git search API" + response.data.items.toString());
-                    result = response.data.items;
+                    result = response.data;
                 } else {
                     console.log("get no data from git search API");
                 }
@@ -30,7 +31,6 @@ searchRouter.service('searchService', function ($http, $q) {
                 console.log('error', error);
                 return $q.reject(error);
             });
-
         }
     }
 });
