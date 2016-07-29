@@ -60,5 +60,6 @@ searchRouter.controller('searchController', function ($scope, $http, searchServi
         console.log("Result Per Page change to: " + num)
         $scope.result_perpage = num;
         $scope.search();
-    }
+    };
+    $scope.search();// search when on load
 });
